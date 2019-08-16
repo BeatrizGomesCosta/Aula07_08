@@ -25,3 +25,28 @@ create view departament_total_salary(dept_name, total_salary) as
 select dept_name, sum(salary)
 from instructor
 group by dept_name; 
+
+
+-- Questão 1 
+
+select ID, name, count(sec_id) as "Number of sections"
+from instructor natural left outer join teaches
+group by ID, name
+order by ID, name;
+
+
+
+-- Questão 2 
+select ID, name,
+(select count(*) as "Number of sections"
+from teaches T where T.id = I.id) as a
+from instructor I;
+
+
+-- Questão 3 
+
+select count(se_id), name
+from instructor natural inner join teaches natural inner join section
+
+
+
